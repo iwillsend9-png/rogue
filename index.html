@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Rabbit's Wonderland</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+  <!-- START SCREEN -->
+  <section id="startScreen">
+
+    <div class="storybook">
+
+      <div class="rabbit-mark">🐇</div>
+
+      <h1>WHITE RABBIT'S<br>WONDERLAND</h1>
+
+      <p class="subtitle">
+        A strange adventure through Wonderland
+      </p>
+
+      <div class="quote">
+        “Oh dear! Oh dear! I shall be too late!”
+      </div>
+
+      <p class="intro">
+        The White Rabbit has lost his way through Wonderland.
+        Strange creatures are appearing everywhere.
+        Run, fight, grow stronger and survive for as long as you can.
+      </p>
+
+      <p class="hint">
+        Move • Survive • Level Up • Discover Wonderland
+      </p>
+
+      <button id="startButton">
+        ENTER WONDERLAND
+      </button>
+
+      <p class="controlsText">
+        WASD / ARROWS — Move<br>
+        SPACE — Rabbit Dash<br>
+        E — Special Ability
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- GAME -->
+  <main id="gameScreen">
+
+    <header class="hud">
+
+      <div class="characterInfo">
+
+        <div class="rabbitName">
+          WHITE RABBIT
+        </div>
+
+        <div class="bar">
+          <div id="healthBar"></div>
+        </div>
+
+        <div class="bar xpBar">
+          <div id="xpBar"></div>
+        </div>
+
+        <div class="stats">
+          HP <span id="hpText">100</span>
+          &nbsp; | &nbsp;
+          LEVEL <span id="levelText">1</span>
+          &nbsp; | &nbsp;
+          XP <span id="xpText">0</span>
+        </div>
+
+      </div>
+
+
+      <div class="survivalInfo">
+
+        <div>
+          TIME
+        </div>
+
+        <strong id="timeText">
+          00:00
+        </strong>
+
+        <div>
+          DEFEATED:
+          <span id="killsText">0</span>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="quoteBox" id="quoteBox">
+      “Curiouser and curiouser!”
+    </div>
+
+
+    <canvas
+      id="gameCanvas"
+      width="960"
+      height="540">
+    </canvas>
+
+
+    <div class="bottomHud">
+
+      <div>
+        <span>SPACE</span>
+        Rabbit Dash
+      </div>
+
+      <div>
+        <span>E</span>
+        Special
+      </div>
+
+      <div>
+        <span>WASD</span>
+        Move
+      </div>
+
+      <button id="fullscreenButton">
+        ⛶ FULLSCREEN
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <!-- LEVEL UP -->
+  <section id="levelScreen">
+
+    <div class="levelPanel">
+
+      <div class="levelIcon">
+        ✨
+      </div>
+
+      <h2>LEVEL UP!</h2>
+
+      <p>
+        Choose your new Wonderland ability
+      </p>
+
+      <div id="upgradeChoices"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GAME OVER -->
+  <section id="gameOver">
+
+    <div class="gameOverPanel">
+
+      <div class="bigRabbit">
+        🐇
+      </div>
+
+      <h2>THE RABBIT HAS FALLEN</h2>
+
+      <p id="finalQuote">
+        “We're all mad here.”
+      </p>
+
+      <div class="finalStats">
+        <p>Time: <strong id="finalTime">00:00</strong></p>
+        <p>Creatures defeated: <strong id="finalKills">0</strong></p>
+        <p>Level reached: <strong id="finalLevel">1</strong></p>
+      </div>
+
+      <button id="restartButton">
+        RETURN TO WONDERLAND
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
