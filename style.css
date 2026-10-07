@@ -1,0 +1,678 @@
+* {
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  background:
+    #090611;
+
+  color: #fff7dc;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+/* =================================
+   START SCREEN
+================================= */
+
+#startScreen {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #49305d 0%,
+      #191127 45%,
+      #07040d 100%
+    );
+
+  z-index: 20;
+}
+
+.storybook {
+  width: min(700px, 92%);
+
+  padding: 35px;
+
+  text-align: center;
+
+  background:
+    #171020;
+
+  border:
+    5px solid #c9a95d;
+
+  box-shadow:
+    0 0 0 6px #30203c,
+    0 20px 70px #000;
+
+  border-radius: 5px;
+}
+
+.rabbit-mark {
+  font-size: 65px;
+
+  animation:
+    rabbitHop 1.5s infinite;
+}
+
+@keyframes rabbitHop {
+
+  50% {
+    transform:
+      translateY(-8px);
+  }
+
+}
+
+.storybook h1 {
+  margin: 5px 0 10px;
+
+  color: #f4d783;
+
+  font-size:
+    clamp(28px, 5vw, 48px);
+
+  line-height: .95;
+
+  text-shadow:
+    4px 4px #39243d;
+}
+
+.subtitle {
+  color: #c9b6d6;
+  font-style: italic;
+}
+
+.quote {
+  margin: 25px 0;
+
+  padding: 15px;
+
+  color: #ffe9a4;
+
+  background:
+    #251832;
+
+  border-left:
+    4px solid #d5af58;
+
+  font-size: 18px;
+
+  font-style: italic;
+}
+
+.intro {
+  max-width: 580px;
+
+  margin:
+    20px auto;
+
+  color: #e5d9e9;
+
+  line-height: 1.6;
+}
+
+.hint {
+  color: #bfa3d2;
+
+  font-size: 14px;
+}
+
+#startButton,
+#restartButton {
+  padding:
+    14px 25px;
+
+  margin-top: 15px;
+
+  background:
+    #8a4d9c;
+
+  color:
+    #fff8dc;
+
+  border:
+    3px solid #d4a8e4;
+
+  font-weight: bold;
+
+  font-size: 16px;
+
+  box-shadow:
+    0 5px #43234e;
+}
+
+#startButton:hover,
+#restartButton:hover {
+  background:
+    #a865ba;
+}
+
+#startButton:active,
+#restartButton:active {
+  transform:
+    translateY(4px);
+
+  box-shadow:
+    none;
+}
+
+.controlsText {
+  margin-top: 20px;
+
+  color: #908099;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* =================================
+   GAME
+================================= */
+
+#gameScreen {
+  display: none;
+
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  background: #17231b;
+}
+
+
+/* =================================
+   HUD
+================================= */
+
+.hud {
+  height: 78px;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  padding:
+    8px 18px;
+
+  background:
+    #171020;
+
+  border-bottom:
+    4px solid #55442a;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+.characterInfo {
+  width: 55%;
+}
+
+.rabbitName {
+  color: #f1d67d;
+
+  font-weight: bold;
+
+  margin-bottom: 5px;
+}
+
+.bar {
+  width: 100%;
+
+  max-width: 450px;
+
+  height: 12px;
+
+  margin-bottom: 4px;
+
+  background: #36171e;
+
+  border:
+    2px solid #0b090d;
+}
+
+#healthBar {
+  width: 100%;
+  height: 100%;
+
+  background:
+    #d34b55;
+}
+
+.xpBar {
+  height: 7px;
+
+  background:
+    #1d233e;
+}
+
+#xpBar {
+  width: 0%;
+  height: 100%;
+
+  background:
+    #70b9ff;
+}
+
+.stats {
+  color: #c9bfd0;
+
+  font-size: 11px;
+}
+
+.stats span {
+  color: #fff0a8;
+}
+
+.survivalInfo {
+  text-align: right;
+
+  color: #bcb0c7;
+
+  font-size: 11px;
+}
+
+.survivalInfo strong {
+  display: block;
+
+  color: #f3d77d;
+
+  font-size: 23px;
+}
+
+.quoteBox {
+  position: absolute;
+
+  top: 86px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 4;
+
+  padding:
+    6px 12px;
+
+  background:
+    rgba(20, 12, 28, .72);
+
+  border:
+    1px solid #725b7b;
+
+  color:
+    #ead9ef;
+
+  font-size: 12px;
+
+  font-style: italic;
+
+  pointer-events: none;
+}
+
+
+/* =================================
+   CANVAS
+================================= */
+
+#gameCanvas {
+  display: block;
+
+  width: 100%;
+
+  height:
+    calc(100% - 120px);
+
+  background:
+    #28462c;
+}
+
+
+/* =================================
+   BOTTOM HUD
+================================= */
+
+.bottomHud {
+  height: 42px;
+
+  display: flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  gap: 25px;
+
+  background:
+    #120d19;
+
+  border-top:
+    3px solid #49364f;
+
+  color: #a99cae;
+
+  font-size: 11px;
+}
+
+.bottomHud span {
+  padding:
+    3px 6px;
+
+  background:
+    #3b2942;
+
+  color: #f4d77f;
+
+  border:
+    1px solid #75617d;
+}
+
+#fullscreenButton {
+  padding:
+    6px 10px;
+
+  color:
+    #f5e9c5;
+
+  background:
+    #372943;
+
+  border:
+    1px solid #796087;
+}
+
+
+/* =================================
+   LEVEL UP
+================================= */
+
+#levelScreen {
+  display: none;
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 50;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(5, 2, 10, .78);
+}
+
+.levelPanel {
+  width:
+    min(700px, 92%);
+
+  padding:
+    28px;
+
+  text-align: center;
+
+  background:
+    #171020;
+
+  border:
+    4px solid #d1ad5e;
+
+  box-shadow:
+    0 20px 70px #000;
+}
+
+.levelIcon {
+  font-size: 42px;
+}
+
+.levelPanel h2 {
+  margin:
+    5px 0;
+
+  color:
+    #f1d477;
+
+  font-size: 32px;
+}
+
+.levelPanel p {
+  color:
+    #c8b9cf;
+}
+
+#upgradeChoices {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.upgrade {
+  min-height: 150px;
+
+  padding: 16px;
+
+  color: #fff5dc;
+
+  background:
+    #24162e;
+
+  border:
+    2px solid #695477;
+
+  transition:
+    transform .15s,
+    background .15s;
+}
+
+.upgrade:hover {
+  transform:
+    translateY(-5px);
+
+  background:
+    #392447;
+
+  border-color:
+    #d1a85d;
+}
+
+.upgradeIcon {
+  font-size: 32px;
+}
+
+.upgradeName {
+  margin:
+    7px 0;
+
+  color:
+    #f1d47a;
+
+  font-weight:
+    bold;
+}
+
+.upgradeDescription {
+  color:
+    #bcaec4;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.4;
+}
+
+
+/* =================================
+   GAME OVER
+================================= */
+
+#gameOver {
+  display: none;
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 60;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    rgba(5, 2, 8, .86);
+}
+
+.gameOverPanel {
+  width:
+    min(540px, 90%);
+
+  padding:
+    35px;
+
+  text-align:
+    center;
+
+  background:
+    #171020;
+
+  border:
+    5px solid #72532d;
+
+  box-shadow:
+    0 20px 70px #000;
+}
+
+.bigRabbit {
+  font-size:
+    65px;
+}
+
+.gameOverPanel h2 {
+  color:
+    #e7c96d;
+}
+
+#finalQuote {
+  color:
+    #cdb8d6;
+
+  font-style:
+    italic;
+}
+
+.finalStats {
+  margin:
+    20px 0;
+
+  color:
+    #bcaec5;
+}
+
+.finalStats strong {
+  color:
+    #f1d47c;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+
+  .storybook {
+    padding:
+      20px;
+  }
+
+  .quote {
+    font-size:
+      14px;
+  }
+
+  .intro {
+    font-size:
+      13px;
+  }
+
+  #upgradeChoices {
+    grid-template-columns:
+      1fr;
+  }
+
+  .upgrade {
+    min-height:
+      90px;
+  }
+
+  .upgradeIcon {
+    display:
+      inline;
+  }
+
+  .bottomHud {
+    gap:
+      7px;
+
+    font-size:
+      9px;
+  }
+
+  .quoteBox {
+    font-size:
+      9px;
+  }
+
+}
